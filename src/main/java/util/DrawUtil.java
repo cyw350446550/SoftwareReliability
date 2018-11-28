@@ -48,6 +48,10 @@ public class DrawUtil extends ApplicationFrame {
         renderer.setSeriesStroke( 1, new BasicStroke(2.0f));
         renderer.setSeriesPaint(2, Color.RED);
         renderer.setSeriesStroke( 2, new BasicStroke(2.0f));
+        renderer.setSeriesPaint(3, Color.BLACK);
+        renderer.setSeriesStroke( 3, new BasicStroke(2.0f));
+        renderer.setSeriesPaint(4, Color.BLUE);
+        renderer.setSeriesStroke( 4, new BasicStroke(2.0f));
         plot.setRenderer(renderer);
         setContentPane(panel);
     }

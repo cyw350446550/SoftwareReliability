@@ -1,13 +1,10 @@
 package view.allGraph;
 
 import model.JMmodel;
-import model.Model;
 import org.jfree.data.xy.XYSeries;
 import util.DataHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -50,6 +47,7 @@ public class UGraph {
         for (int i = 0; i < xData.size(); i++) {
             yData.add(i / (double) (xData.size() + 1));
         }
+
         XYSeries uSeries = new XYSeries("U-graph");
         double x, y, y2;
         while (xData.size() != 1) {
