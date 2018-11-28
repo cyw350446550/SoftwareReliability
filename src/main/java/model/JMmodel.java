@@ -10,7 +10,7 @@ import static java.lang.Math.abs;
  * @Date: 2018/11/5 19:05
  * @Description:
  */
-public class JMmodel {
+public class JMmodel implements Model{
     private int []data;
     private double ex = 0.1;
     private double ey = 0.1;
@@ -18,7 +18,11 @@ public class JMmodel {
     private double resΦ;
     private double p;
 
-    public JMmodel(int []data,double ex, double ey) {
+    public JMmodel(int[] data) {
+        this.data = data;
+    }
+
+    public JMmodel(int []data, double ex, double ey) {
         this.data = data;
         this.ex = ex;
         this.ey = ey;
@@ -97,13 +101,12 @@ public class JMmodel {
         }
     }
 
-    public double first() {
+    public void first() {
         calculatorP();
         int n = data.length - 1;
         if (p > (n - 1) / 2) {
-            return second(n - 1, n);
+             second(n - 1, n);
         }
-        return 0;
     }
 
     private double second(double l, double r) {
@@ -118,7 +121,7 @@ public class JMmodel {
         }
     }
 
-    public void calculatorP() {
+    private void calculatorP() {
         double tmp = 0;
         int len = data.length - 1;
         for (int i = 1; i <= len; i++) {

@@ -7,13 +7,17 @@ import java.util.Map;
  * @Date: 2018/11/15 14:33
  * @Description:
  */
-public class GOmodel {
+public class GOmodel implements Model {
 
     private int []data;
     private double D;
-    private double YV;
+    private double YV = 0.1;
     private double a;
     private double b;
+
+    public GOmodel(int[] data) {
+        this.data = data;
+    }
 
     public double getA() {
         return a;

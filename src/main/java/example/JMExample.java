@@ -1,6 +1,6 @@
 package example;
 
-import Util.DataHandler;
+import util.DataHandler;
 import model.JMmodel;
 
 import java.io.IOException;

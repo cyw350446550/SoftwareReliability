@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @Description:
  */
 public class DataHandler {
+
     public int[] readData(String url) throws IOException {
         ArrayList<String> arrayList = new ArrayList<String>();
         FileReader fr = new FileReader(url);
@@ -30,4 +31,6 @@ public class DataHandler {
         }
         return array;
     }
+
+
 }
