@@ -1,9 +1,9 @@
 package view.allGraph;
 
-import model.GOmodel;
-import model.JMmodel;
+import entity.GOmodel;
+import entity.JMmodel;
 import org.jfree.data.xy.XYSeries;
-import util.DataHandler;
+import util.DataUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ public class PLRGraph {
     public XYSeries createPLRGraph() throws IOException {
         //读入数据
         String url = "src/main/resources/data.txt";
-        DataHandler dataHandler = new DataHandler();
-        int[] data = dataHandler.readData(url);
+        DataUtil dataUtil = new DataUtil();
+        int[] data = dataUtil.readData(url);
         int dataLen = data.length;
         //划分测试集、训练集
         int trainDataLen = (int) (dataLen * 0.7);
@@ -26,7 +26,9 @@ public class PLRGraph {
         int[] testData = new int[dataLen - trainDataLen];
         for (int i = 0; i < trainDataLen; i++) {
             trainData[i] = data[i];
-            testData[i] = i + trainDataLen < dataLen ? data[i + trainDataLen]: testData[i];
+            if (i + trainDataLen < dataLen) {
+                testData[i] = data[i + trainDataLen];
+            }
         }
         //JM模型 训练得到fi N;
         JMmodel jMmodel = new JMmodel(trainData, 0.1, 0.1);
@@ -48,11 +50,12 @@ public class PLRGraph {
                 sumTop *=  fi*(N -j + 1)*Math.exp(-fi*(N - j + 1)*testData[j]);
                 sumBase *= 1/(a*(1- Math.exp(-b*(j + 1)))) * Math.exp(-testData[j]/(a*(1- Math.exp(-b*(j + 1)))));
             }
+
             xData.add(i+1);
             yData.add(sumTop/sumBase);
             uSeries.add(i+1,sumTop/sumTop);
-//            System.out.println(sumTop +" " + sumBase);
-//            System.out.println(i+1 +" " + sumTop/sumBase);
+            System.out.println(sumTop +" " + sumBase);
+            System.out.println(" PLR比值为："+ sumTop/sumBase);
         }
        return uSeries;
     }

@@ -1,6 +1,4 @@
-package model;
-
-import java.util.Map;
+package entity;
 
 /**
  * @Auther: cyw35

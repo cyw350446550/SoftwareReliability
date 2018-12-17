@@ -1,4 +1,4 @@
-package view;
+package example;
 
 import org.jfree.data.xy.XYSeries;
 import util.DrawUtil;
@@ -33,7 +33,7 @@ public class DrawExample {
         drawUtil.addDataset(xySeries);
 
         //U图KS距离
-        XYSeries uGraphKSDis = new XYSeries("UGraphKSDis");
+        XYSeries uGraphKSDis = new XYSeries("KS1");
         double maxDis = 0;
         double maxXData = 0;
         double maxYData =0;
@@ -49,7 +49,7 @@ public class DrawExample {
         drawUtil.addDataset(uGraphKSDis);
         // Y图KS距离
         maxDis = 0;
-        XYSeries yGraphKSDis = new XYSeries("YGraphKSDis");
+        XYSeries yGraphKSDis = new XYSeries("KS2");
         for(int i = 0;i<ySeries.getItemCount();i++){
             if(Math.abs(ySeries.getX(i).doubleValue() - ySeries.getY(i).doubleValue())> maxDis){
                 maxDis = Math.abs(ySeries.getX(i).doubleValue() - ySeries.getY(i).doubleValue());
@@ -67,9 +67,9 @@ public class DrawExample {
         drawUtil.setVisible(true);
 
         //画PLR图，由于分母为0 ，画不出来
-//        DrawUtil drawUtil1 = new DrawUtil("");
-//        PLRGraph plrGraph = new PLRGraph();
-//        XYSeries series1 = plrGraph.createPLRGraph();
+        DrawUtil drawUtil1 = new DrawUtil("");
+        PLRGraph plrGraph = new PLRGraph();
+        XYSeries series1 = plrGraph.createPLRGraph();
 //        drawUtil1.addDataset(series1);
 //        drawUtil1.drawGraph();
 //        drawUtil1.pack();

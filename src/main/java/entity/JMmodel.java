@@ -1,7 +1,4 @@
-package model;
-
-import java.io.*;
-import java.util.ArrayList;
+package entity;
 
 import static java.lang.Math.abs;
 

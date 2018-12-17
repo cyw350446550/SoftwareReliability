@@ -1,7 +1,7 @@
 package example;
 
-import util.DataHandler;
-import model.JMmodel;
+import util.DataUtil;
+import entity.JMmodel;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import java.io.IOException;
 public class JMExample {
     public static void main(String[] args) throws IOException {
         String url = "src/main/resources/data.txt";
-        DataHandler dataHandler = new DataHandler();
-        int[] data = dataHandler.readData(url);
+        DataUtil dataUtil = new DataUtil();
+        int[] data = dataUtil.readData(url);
         JMmodel jMmodel = new JMmodel(data,0.1, 0.1);
         jMmodel.first();
         System.out.println("N = " + jMmodel.getResN());

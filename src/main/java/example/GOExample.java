@@ -1,7 +1,7 @@
 package example;
 
-import util.DataHandler;
-import model.GOmodel;
+import util.DataUtil;
+import entity.GOmodel;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import java.io.IOException;
 public class GOExample {
     public static void main(String[] args) throws IOException {
         String url = "src/main/resources/data.txt";
-        DataHandler dataHandler = new DataHandler();
-        int[] data = dataHandler.readData(url);
+        DataUtil dataUtil = new DataUtil();
+        int[] data = dataUtil.readData(url);
         GOmodel gOmodel = new GOmodel(data,0.1);
         gOmodel.first();
         System.out.println("a = "+ gOmodel.getA());

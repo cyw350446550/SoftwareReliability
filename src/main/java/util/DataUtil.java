@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @Date: 2018/11/15 15:15
  * @Description:
  */
-public class DataHandler {
+public class DataUtil {
 
     public int[] readData(String url) throws IOException {
         ArrayList<String> arrayList = new ArrayList<String>();

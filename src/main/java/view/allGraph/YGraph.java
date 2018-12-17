@@ -1,8 +1,8 @@
 package view.allGraph;
 
-import model.JMmodel;
+import entity.JMmodel;
 import org.jfree.data.xy.XYSeries;
-import util.DataHandler;
+import util.DataUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ public class YGraph {
 
     public XYSeries createYGraph() throws IOException {
         String url = "src/main/resources/data.txt";
-        DataHandler dataHandler = new DataHandler();
-        int[] data = dataHandler.readData(url);
+        DataUtil dataUtil = new DataUtil();
+        int[] data = dataUtil.readData(url);
         int dataLen = data.length;
         int trainDataLen = (int) (dataLen * 0.7);
         int[] trainData = new int[trainDataLen];
@@ -39,7 +39,6 @@ public class YGraph {
 
 
         int testDataLen = testData.length;
-//        System.out.println(testDataLen);
         TreeSet<Double> xData = new TreeSet<Double>();
 
         for (int i = 0; i < testDataLen; i++) {

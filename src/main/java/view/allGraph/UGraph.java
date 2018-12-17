@@ -1,8 +1,8 @@
 package view.allGraph;
 
-import model.JMmodel;
+import entity.JMmodel;
 import org.jfree.data.xy.XYSeries;
-import util.DataHandler;
+import util.DataUtil;
 
 import java.io.IOException;
 import java.util.TreeSet;
@@ -14,10 +14,12 @@ import java.util.TreeSet;
  */
 public class UGraph {
     public XYSeries createUGraph() throws IOException {
+        //读入数据
         String url = "src/main/resources/data.txt";
-        DataHandler dataHandler = new DataHandler();
-        int[] data = dataHandler.readData(url);
+        DataUtil dataUtil = new DataUtil();
+        int[] data = dataUtil.readData(url);
         int dataLen = data.length;
+        //划分测试集、训练集
         int trainDataLen = (int) (dataLen * 0.7);
         int[] trainData = new int[trainDataLen];
         int[] testData = new int[dataLen - trainDataLen];
@@ -27,7 +29,6 @@ public class UGraph {
                 testData[i] = data[i + trainDataLen];
             }
         }
-
         //训练得到fi N;
         JMmodel jMmodel = new JMmodel(trainData, 0.1, 0.1);
         jMmodel.first();
